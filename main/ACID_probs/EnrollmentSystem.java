@@ -7,7 +7,7 @@ public class EnrollmentSystem {
     private static final String USER = "postgres";
     private static final String PASSWORD = "12345";
 
-public void enrollStudent (int studentId, int courseId, Date enrollmentDate) throws SQLException {
+public static void enrollStudent (int studentId, int courseId, Date enrollmentDate) throws SQLException {
     Connection connection = null;
     PreparedStatement enrollStmt = null;
 
@@ -45,7 +45,7 @@ public void enrollStudent (int studentId, int courseId, Date enrollmentDate) thr
     }
 }
 
-    private boolean isCourseFull(int courseId, Connection connection) throws SQLException {
+    private static boolean isCourseFull(int courseId, Connection connection) throws SQLException {
         boolean isFull = false;
         PreparedStatement countStmt = null;
         ResultSet resultSet = null;
@@ -74,7 +74,7 @@ public void enrollStudent (int studentId, int courseId, Date enrollmentDate) thr
         return isFull;
     }
 
-    private int getCourseCapacity(int courseId, Connection connection) throws SQLException {
+    private static int getCourseCapacity(int courseId, Connection connection) throws SQLException {
         int capacity = 0;
         PreparedStatement capacityStmt = null;
         ResultSet resultSet = null;
@@ -143,5 +143,18 @@ public void enrollStudent (int studentId, int courseId, Date enrollmentDate) thr
         }
     }
 
+
+    public static void main(String[] args) {
+
+    try {
+        enrollStudent(2,1, Date.valueOf("2024-03-25"));
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+
+    }
+
 }
+
+
 
